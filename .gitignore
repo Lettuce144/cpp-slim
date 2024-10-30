@@ -5,12 +5,12 @@
 /x64-Debug
 /x64-Release
 /.vs
-/*.user
-/cpp-slim.VC.VC.opendb
-/cpp-slim.VC.db
 /coverage
 /obj
 /bin
 /api-docs
 /examples/custom-type/output.html
 /examples/custom-type/Intermediate
+/CMakeFiles/
+/CMakeCache.txt
+/cmake_install.cmake

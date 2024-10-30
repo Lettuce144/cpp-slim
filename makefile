@@ -51,3 +51,18 @@ test: bin/test
 
 -include $(DEPS)
 
+# CMake configuration
+CMAKE_BUILD_DIR := cmake_build
+
+cmake_configure:
+	@mkdir -p $(CMAKE_BUILD_DIR)
+	cd $(CMAKE_BUILD_DIR) && cmake ..
+
+cmake_build:
+	cd $(CMAKE_BUILD_DIR) && cmake --build .
+
+cmake_clean:
+	rm -rf $(CMAKE_BUILD_DIR)
+
+cmake_test:
+	cd $(CMAKE_BUILD_DIR) && ctest
