@@ -129,7 +129,9 @@ namespace slim
 
     // Rails number extensions
     Ptr<Time> number_ago(const Number *self, const FunctionArgs &args);
+    
     Ptr<Time> number_from_now(const Number *self, const FunctionArgs &args);
+
     inline Ptr<Number> number_fortnights(const Number *self)
     {
         return make_value(self->get_value() * 2 * Time::TICKS_WEEK);

@@ -5,6 +5,8 @@
 #include "types/String.hpp"
 #include "FunctionHelpers.hpp"
 
+#include <cstring>
+
 namespace slim
 {
     namespace
@@ -476,7 +478,7 @@ namespace slim
     Ptr<Time> TimeType::utc(const FunctionArgs &args)const
     {
         auto tm = slim::get_tm(args);
-        auto t = _mkgmtime(&tm);
+        auto t = timegm(&tm);
         return at(t);
     }
     const MethodTable &TimeType::method_table()const
@@ -512,7 +514,7 @@ namespace slim
             }
             else tm = slim::get_tm(args);
 
-            v = _mkgmtime(&tm);
+            v = timegm(&tm);
             v -= offset;
         }
     }
@@ -523,7 +525,7 @@ namespace slim
     tm Time::get_tm()const
     {
         tm tm;
-        gmtime_s(&tm, &v);
+        gmtime_r(&v, &tm);
         return tm;
     }
 
@@ -556,7 +558,7 @@ namespace slim
         else
         {
             auto t = coerce<Time>(rhs);
-            return make_value(v - t->v);
+            return make_value(static_cast<long long>(v - t->v));
         }
     }
 
