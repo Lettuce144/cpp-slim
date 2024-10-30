@@ -5,6 +5,7 @@
 #include <unordered_map>
 #include "../Error.hpp"
 #include "../Operators.hpp"
+
 namespace slim
 {
     class Object;

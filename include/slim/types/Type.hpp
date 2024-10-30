@@ -2,6 +2,7 @@
 #include "Object.hpp"
 #include "Symbol.hpp"
 #include "../Error.hpp"
+#include "Function.hpp"
 namespace slim
 {
     /**Class/Module type object helper.*/
@@ -15,7 +16,8 @@ namespace slim
 
         virtual ObjectPtr get_constant(SymPtr name)override
         {
-            auto it = constants.find(name);
+            ObjectPtr key = std::static_pointer_cast<Object>(name);
+            auto it = constants.find(key);
             if (it != constants.end()) return it->second;
             else throw NoConstantError(this, name);
         }

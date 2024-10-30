@@ -1,4 +1,4 @@
-#include "TemplateBlock.hpp"
+#include "template/TemplateBlock.hpp"
 #include "template/TemplatePart.hpp"
 #include "types/HtmlSafeString.hpp"
 #include "expression/AstOp.hpp"
