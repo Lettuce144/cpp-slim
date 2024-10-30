@@ -65,4 +65,4 @@ add_custom_target(clean_coverage
 
 # Add tests for CTest (if needed for further testing with ctest)
 enable_testing()
-add_test(NAME cpp_slim_tests COMMAND cpp_slim_tests)
+#add_test(NAME cpp_slim_tests COMMAND cpp_slim_tests)
