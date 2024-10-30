@@ -33,7 +33,7 @@ namespace slim
     }
     Ptr<Number> Object::hash_obj()
     {
-        return make_value(hash());
+        return make_value(static_cast<double>(hash())); //FIXME: long long?
     }
     int Object::cmp(const Object *rhs)const
     {

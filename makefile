@@ -1,5 +1,5 @@
 LIBS :=
-CFLAGS := -Wall -Wconversion -std=c++11
+CFLAGS := -Wall -Wconversion -std=c++14 -O0 -fPIC
 LDFLAGS :=
 
 CFLAGS += -g --coverage

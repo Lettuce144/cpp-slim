@@ -548,7 +548,7 @@ namespace slim
         {
             if (offset >= (int)v.size()) offset = (int)v.size() - 1;
             auto match = regex->do_rmatch(v, offset + 1);
-            if (match.size()) return make_value(match[1].first - v.begin());
+            if (match.size()) return make_value(static_cast<double>(match[1].first - v.begin())); //FIXME: long long?
             else return NIL_VALUE;
         }
         else if (auto substring = dynamic_cast<String*>(pattern))

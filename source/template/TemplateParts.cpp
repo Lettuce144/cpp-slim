@@ -164,7 +164,7 @@ namespace slim
             //Output attributes
             for (auto &i : attrs)
             {
-                auto &name = html_escape(i.first);
+                const auto &name = html_escape(i.first);
                 auto &values = i.second;
 
                 if (values.empty()) continue; //empty / no value
