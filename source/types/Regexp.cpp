@@ -51,14 +51,13 @@ namespace slim
     {
         auto sub = get_sub(n);
         if (!sub.matched) return NIL_VALUE;
-        else return make_value(sub.first - str.begin());
+        else return make_value<long>(sub.first - str.begin());
     }
     Ptr<Array> MatchData::captures()
     {
         auto out = create_object<Array>();
         for (size_t i = 1; i < match.size(); ++i)
         {
-            auto &sub = match[i];
             out->push_back(sub_str((int)i));
         }
         return out;
@@ -67,15 +66,15 @@ namespace slim
     {
         auto sub = get_sub(n);
         if (!sub.matched) return NIL_VALUE;
-        else return make_value(sub.second - str.begin());
+        else return make_value<long>(sub.second - str.begin());
     }
     Ptr<Object> MatchData::offset(Number * n)
     {
         auto sub = get_sub(n);
-        if (!sub.matched) return make_array({NIL_VALUE, NIL_VALUE});
-        return make_array({
-                make_value(sub.first - str.begin()),
-                make_value(sub.second - str.begin())
+        if (!sub.matched) return make_array(std::vector<ObjectPtr>{NIL_VALUE, NIL_VALUE});
+        return make_array(std::vector<ObjectPtr>{
+                make_value<long>(sub.first - str.begin()),
+                make_value<long>(sub.second - str.begin())
             });
     }
     Ptr<String> MatchData::post_match()
@@ -88,7 +87,7 @@ namespace slim
     }
     Ptr<Number> MatchData::size()
     {
-        return make_value(match.size());
+        return make_value<long>(match.size());
     }
     Ptr<String> MatchData::string()
     {

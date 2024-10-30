@@ -63,7 +63,7 @@ namespace slim
         {
             return convert_return_type(
                 (static_cast<SelfType*>(self)->*func)
-                (slim::unpack_arg<std::remove_const<std::remove_reference<Args>::type>::type>(args[indices])...));
+                (slim::unpack_arg<typename std::remove_const<typename std::remove_reference<Args>::type>::type>(args[indices])...));
         }
         /**Call a varargs member method.*/
         template<class SelfType>
@@ -98,7 +98,7 @@ namespace slim
         ObjectPtr free_call_unpacked(Object *self, RetType(*func)(SelfType *self, Args...), const FunctionArgs &args, Indices<indices...>)
         {
             return convert_return_type(func(static_cast<SelfType*>(self),
-                    slim::unpack_arg<std::remove_const<std::remove_reference<Args>::type>::type>(args[indices])...));
+                    slim::unpack_arg<typename std::remove_const<typename std::remove_reference<Args>::type>::type>(args[indices])...));
         }
         /**Call a varargs member method.*/
         template<class SelfType>
