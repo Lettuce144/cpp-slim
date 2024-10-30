@@ -8,15 +8,18 @@ set(CMAKE_CXX_STANDARD_REQUIRED ON)
 # Include directories
 include_directories(include/slim)
 
-# Compiler flags for warnings, conversion, and coverage
-set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -mcx16 -Wall -Wconversion -g --coverage")
-set(CMAKE_EXE_LINKER_FLAGS "${CMAKE_EXE_LINKER_FLAGS} --coverage")
+# Compiler flags for warnings and conversion
+set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -Wall -Wconversion -g")
+set(CMAKE_EXE_LINKER_FLAGS "${CMAKE_EXE_LINKER_FLAGS}")
 
 # Add Linux-only flag
 if(CMAKE_SYSTEM_NAME STREQUAL "Linux")
-    set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -Wsuggest-override")
+    set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -mcx16 -Wsuggest-override --coverage")
+    set(CMAKE_EXE_LINKER_FLAGS "${CMAKE_EXE_LINKER_FLAGS} --coverage")
+elseif(CMAKE_SYSTEM_NAME STREQUAL "Windows")
+    # Add Windows-specific compiler and linker flags if any
+    set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} /Wall /WX")  # Example for strict compilation on Windows
 endif()
-
 # Directories for generated binaries, objects, and test outputs
 set(BIN_DIR "${CMAKE_BINARY_DIR}/bin")
 set(OBJ_DIR "${CMAKE_BINARY_DIR}/obj/lib")
