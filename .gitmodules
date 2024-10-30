@@ -1,0 +1,3 @@
+[submodule "thirdparty/test"]
+	path = thirdparty/test
+	url = https://github.com/boostorg/test.git
