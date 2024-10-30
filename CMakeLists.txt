@@ -9,12 +9,12 @@ set(CMAKE_CXX_STANDARD_REQUIRED ON)
 include_directories(include/slim)
 
 # Compiler flags for warnings and conversion
-set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -Wall -Wconversion -g")
+set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -Wall -g")
 set(CMAKE_EXE_LINKER_FLAGS "${CMAKE_EXE_LINKER_FLAGS}")
 
 # Add Linux-only flag
 if(CMAKE_SYSTEM_NAME STREQUAL "Linux")
-    set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -mcx16 -Wsuggest-override --coverage")
+    set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -mcx16 -Wsuggest-override -Wconversion --coverage")
     set(CMAKE_EXE_LINKER_FLAGS "${CMAKE_EXE_LINKER_FLAGS} --coverage")
 elseif(CMAKE_SYSTEM_NAME STREQUAL "Windows")
     # Add Windows-specific compiler and linker flags if any
